@@ -3,6 +3,7 @@ package notas;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -10,6 +11,7 @@ import javax.swing.text.JTextComponent;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.util.Scanner;
@@ -31,25 +33,23 @@ public class Notabimestral extends JFrame {
 	private JTextField txtHisdois;
 	private JTextField txtHistres;
 	private JTextField txtHisqua;
+	private JLabel lblMat;
+	private int matm;
+	private int matd;
+	private int matt;
+	private int matQ;
+	private int resultado;
+	private double resulmat;
 
 	/**
 	 * Launch the application.
 	 */
-	static double conta (int a, int b, int d){
+	private double conta (int a, int b, int d){
 		int c = a*b/d;
 		return c;
 	}
 	public static void main(String[] args) {
 		
-		int Matm = Integer.parseInt(txtMatum.getText());
-		int Matd = Integer.parseInt(txtMatdois.getText());
-		int Matt = Integer.parseInt(txtMattres.getText());
-		int MatQ = Integer.parseInt(txtMatqua.getText());
-		int resultado = Matm +Matd + Matt + MatQ;
-		
-		conta(resultado,100,40);
-		JTextComponent lblMat = null;
-		lblMat.setText("resultado");
 		
 		
 		
@@ -70,6 +70,16 @@ public class Notabimestral extends JFrame {
 		
 	}
 
+	public void clique(){
+		resulmat = conta(resultado,100,40);
+		atualizaCampos();
+		
+	}
+	private void atualizaCampos() {
+		// TODO Auto-generated method stub
+		lblMat.setText(resulmat+"");
+		
+	}
 	/**
 	 * Create the frame.
 	 */
@@ -80,6 +90,12 @@ public class Notabimestral extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		JButton btnMat = new JButton("start");
+		//botao.setHorizontalAlignment(SwingConstants.BOTTOM);
+		btnMat.setBounds(22 , 99, 90, 20);
+		btnMat.addActionListener(a -> clique());
+		contentPane.add(btnMat);
 		
 		JLabel lblBimestre = new JLabel("MATEMATICA");
 		lblBimestre.setFont(new Font("Arial", Font.PLAIN, 17));
@@ -129,7 +145,7 @@ public class Notabimestral extends JFrame {
 		lblruse.setBounds(809, 20, 105, 20);
 		contentPane.add(lblruse);
 		
-		JLabel lblMat = new JLabel("0");
+		lblMat = new JLabel("0");
 		lblMat.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMat.setFont(new Font("Arial", Font.PLAIN, 17));
 		lblMat.setBounds(809, 68, 105, 20);
@@ -230,5 +246,19 @@ public class Notabimestral extends JFrame {
 		txtHisqua.setColumns(10);
 		txtHisqua.setBounds(683, 333, 90, 22);
 		contentPane.add(txtHisqua);
+		
+		//iniciaABagaca();
+	}
+	private void iniciaABagaca() {
+		matm = Integer.parseInt(txtMatum.getText());
+		matd = Integer.parseInt(txtMatdois.getText());
+		matt = Integer.parseInt(txtMattres.getText());
+		matQ = Integer.parseInt(txtMatqua.getText());
+		resultado = matm +matd + matt + matQ;
+		
+		
+		JTextComponent lblMat = null;
+		
+		
 	}
 }
