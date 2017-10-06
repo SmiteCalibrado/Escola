@@ -17,6 +17,7 @@ import java.awt.Font;
 import java.util.Scanner;
 
 import javax.swing.JTextField;
+import javax.swing.JEditorPane;
 
 public class Notabimestral extends JFrame {
 
@@ -38,20 +39,21 @@ public class Notabimestral extends JFrame {
 	private int matd;
 	private int matt;
 	private int matQ;
-	private int resultado;
 	private double resulmat;
+	private int r;
 
 	/**
 	 * Launch the application.
 	 */
-	private double conta (int a, int b, int d){
+	private int conta (int a,int b,int d){
 		int c = a*b/d;
 		return c;
 	}
-	public static void main(String[] args) {
-		
-		
-		
+	private int soma (int u,int i,int o,int p) {
+		int resultado = u + i + o + p;
+		return resultado;
+	}
+	public static void main(String[] args) {		
 		
 		
 		EventQueue.invokeLater(new Runnable() {
@@ -63,21 +65,18 @@ public class Notabimestral extends JFrame {
 					e.printStackTrace();
 				}
 			}
-		});
-		
-		
-		
+		});		
 		
 	}
-
 	public void clique(){
-		resulmat = conta(resultado,100,40);
+		iniciaABagaca();
+		resulmat = conta(r,100,40);
 		atualizaCampos();
-		
+		r = soma (matm,matd,matt,matQ);
 	}
 	private void atualizaCampos() {
 		// TODO Auto-generated method stub
-		lblMat.setText(resulmat+"");
+		lblMat.setText(resulmat+"%");
 		
 	}
 	/**
@@ -91,9 +90,9 @@ public class Notabimestral extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnMat = new JButton("start");
+		JButton btnMat = new JButton("Calcular");
 		//botao.setHorizontalAlignment(SwingConstants.BOTTOM);
-		btnMat.setBounds(22 , 99, 90, 20);
+		btnMat.setBounds(809 , 101, 105, 32);
 		btnMat.addActionListener(a -> clique());
 		contentPane.add(btnMat);
 		
@@ -145,17 +144,17 @@ public class Notabimestral extends JFrame {
 		lblruse.setBounds(809, 20, 105, 20);
 		contentPane.add(lblruse);
 		
-		lblMat = new JLabel("0");
+		lblMat = new JLabel("");
 		lblMat.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMat.setFont(new Font("Arial", Font.PLAIN, 17));
 		lblMat.setBounds(809, 68, 105, 20);
 		contentPane.add(lblMat);
 		
-		JLabel label_2 = new JLabel("100%");
-		label_2.setHorizontalAlignment(SwingConstants.CENTER);
-		label_2.setFont(new Font("Arial", Font.PLAIN, 17));
-		label_2.setBounds(809, 206, 105, 20);
-		contentPane.add(label_2);
+		JLabel lblPort = new JLabel("");
+		lblPort.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPort.setFont(new Font("Arial", Font.PLAIN, 17));
+		lblPort.setBounds(809, 206, 105, 20);
+		contentPane.add(lblPort);
 		
 		JLabel label_3 = new JLabel("100%");
 		label_3.setHorizontalAlignment(SwingConstants.CENTER);
@@ -246,6 +245,7 @@ public class Notabimestral extends JFrame {
 		txtHisqua.setColumns(10);
 		txtHisqua.setBounds(683, 333, 90, 22);
 		contentPane.add(txtHisqua);
+
 		
 		//iniciaABagaca();
 	}
@@ -254,11 +254,6 @@ public class Notabimestral extends JFrame {
 		matd = Integer.parseInt(txtMatdois.getText());
 		matt = Integer.parseInt(txtMattres.getText());
 		matQ = Integer.parseInt(txtMatqua.getText());
-		resultado = matm +matd + matt + matQ;
-		
-		
-		JTextComponent lblMat = null;
-		
-		
-	}
+	}	
+	
 }
